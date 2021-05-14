@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Termium</string>
+    <string name="search_tools">Search Tools</string>
+    <string name="termux">Termux</string>
+</resources>
