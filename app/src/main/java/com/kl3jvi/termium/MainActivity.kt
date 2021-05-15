@@ -1,10 +1,13 @@
 package com.kl3jvi.termium
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ashokvarma.bottomnavigation.BottomNavigationBar
@@ -12,13 +15,16 @@ import com.ashokvarma.bottomnavigation.BottomNavigationItem
 import com.kl3jvi.termium.fragments.DNSFragment
 import com.kl3jvi.termium.fragments.HomeFragment
 import com.kl3jvi.termium.fragments.IPGeolocator
+import com.yarolegovich.lovelydialog.LovelyStandardDialog
 
 class MainActivity : AppCompatActivity() {
     lateinit var bottomNavBar: BottomNavigationBar
-
+    lateinit var context: Context
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        context = this;
         bottomNavBar = findViewById(R.id.bottom_navigation_bar)
         bottomNavBar.addItem(BottomNavigationItem(R.drawable.ic_round_home_24, "Home"))
             .addItem(BottomNavigationItem(R.drawable.ic_ip, "IP Geolocator"))
@@ -37,7 +43,6 @@ class MainActivity : AppCompatActivity() {
             override fun onTabSelected(position: Int) {
                 var selectedFragment: Fragment = HomeFragment();
 
-
                 when (position) {
                     0 -> selectedFragment = HomeFragment()
                     1 -> selectedFragment = IPGeolocator()
@@ -48,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                     .replace(R.id.root_container, selectedFragment)
                     .commitAllowingStateLoss()
             }
+
             override fun onTabUnselected(position: Int) {}
             override fun onTabReselected(position: Int) {}
         })
@@ -61,20 +67,29 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val id = item.itemId;
+        val dialog = LovelyStandardDialog(context)
 
         if (id == R.id.termux) {
-            var launchIntent: Intent? = null
-            try {
-                launchIntent = packageManager.getLaunchIntentForPackage("com.termux")
-            } catch (ignored: Exception) {
-            }
-            if (launchIntent == null) {
-                startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://play.google.com/store/apps/details?id=" + "com.termux")))
-            } else {
-                startActivity(launchIntent)
-            }
+            dialog.setTopColor(Color.parseColor("#044e97"))
+                .setIcon(R.drawable.ic_termux)
+                .setTitle("Do you want to go to Termux?")
+                .setMessage("Go to termux and paste the commands to try the tools.")
+                .setPositiveButton("Go") {
+                    var launchIntent: Intent? = null
+                    try {
+                        launchIntent = packageManager.getLaunchIntentForPackage("com.termux")
+                    } catch (ignored: Exception) {
+                        println(ignored.message)
+                    }
+                    if (launchIntent == null) {
+                        startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://play.google.com/store/apps/details?id=" + "com.termux")))
+                    } else {
+                        startActivity(launchIntent)
+                    }
+                }.setNegativeButton("No",null)
+                .setButtonsColor(Color.parseColor("#044e97"))
+                .show()
         }
         return super.onOptionsItemSelected(item)
-
     }
 }
