@@ -3,4 +3,5 @@
     <string name="search_tools">Search Tools</string>
     <string name="termux">Termux</string>
     <string name="tools_list">Tools List</string>
+    <string name="enter_an_ip_address">Enter an IP Address</string>
 </resources>
