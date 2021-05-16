@@ -5,9 +5,11 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_termux.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1453125" />
+        <entry key="app/src/main/res/layout/activity_tool_details.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/layout/dns_fragment.xml" value="0.31354166666666666" />
-        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.16354166666666667" />
+        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.4" />
         <entry key="app/src/main/res/layout/ip_fragment.xml" value="0.31354166666666666" />
+        <entry key="app/src/main/res/layout/tools_row.xml" value="0.31354166666666666" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.16354166666666667" />
       </map>
     </option>
