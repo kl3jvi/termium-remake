@@ -4,4 +4,9 @@
     <string name="termux">Termux</string>
     <string name="tools_list">Tools List</string>
     <string name="enter_an_ip_address">Enter an IP Address</string>
+    <string name="look_up">Look Up</string>
+    <string name="connection">CONNECTION</string>
+    <string name="timezone">TIMEZONE</string>
+    <string name="currency">CURRENCY</string>
+    <string name="unknown"><![CDATA[<unknown>]]></string>
 </resources>

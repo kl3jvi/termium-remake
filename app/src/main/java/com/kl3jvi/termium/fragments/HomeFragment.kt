@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kl3jvi.termium.R
 import com.kl3jvi.termium.data.ToolItem
 import com.kl3jvi.termium.data.ToolsAdapter
+import java.net.URL
+import java.util.*
+import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
@@ -125,6 +128,8 @@ class HomeFragment : Fragment() {
         (recyclerView.layoutManager as LinearLayoutManager?)!!.stackFromEnd = true
         recyclerView.setHasFixedSize(true)
         recyclerView.scrollToPosition(0)
+
+
 
         return view
 
