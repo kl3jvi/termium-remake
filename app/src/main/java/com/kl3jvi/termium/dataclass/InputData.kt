@@ -1,4 +1,4 @@
-package com.kl3jvi.termium.data
+package com.kl3jvi.termium.dataclass
 
 data class InputData(
     val ip: String,

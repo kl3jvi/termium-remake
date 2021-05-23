@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.gson.GsonBuilder
 import com.kl3jvi.termium.R
-import com.kl3jvi.termium.data.InputData
+import com.kl3jvi.termium.dataclass.InputData
 import okhttp3.*
 import java.io.IOException
 
@@ -38,17 +38,15 @@ class IPGeolocator : Fragment() {
 
         val lookupButton: Button = view.findViewById(R.id.lookup)
         lookupButton.setOnClickListener { fetchJson() }
+        fetchJson()
         return view
     }
 
     private fun fetchJson() {
-        var input: String = ipEditText.text.toString()
-        if (input.isEmpty()) {
-            input = "0"
-        }
+        val input: String = ipEditText.text.toString()
         Log.i("Fetching Json", input)
         val accessKey = "3eb31287efd82a01bde70e05a257965b"
-        var url: String = if (input.isEmpty()) {
+        val url: String = if (input.isEmpty()) {
             "http://api.ipstack.com/check?access_key=$accessKey"
         } else "http://api.ipstack.com/${input}?access_key=$accessKey"
         println(url)
